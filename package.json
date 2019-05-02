@@ -8,6 +8,9 @@
   },
   "author": "Nate Watts",
   "license": "MIT",
+  "scripts": {
+    "tree-sitter:generate": "tree-sitter generate"
+  },
   "dependencies": {
     "nan": "^2.13.2"
   },
