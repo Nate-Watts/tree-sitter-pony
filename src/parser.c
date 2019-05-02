@@ -14,13 +14,13 @@
 #define MAX_ALIAS_SEQUENCE_LENGTH 1
 
 enum {
-  anon_sym_ = 1,
+  anon_sym_hello = 1,
   sym_source_file = 2,
 };
 
 static const char *ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
-  [anon_sym_] = "",
+  [anon_sym_hello] = "hello",
   [sym_source_file] = "source_file",
 };
 
@@ -29,7 +29,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = true,
   },
-  [anon_sym_] = {
+  [anon_sym_hello] = {
     .visible = true,
     .named = false,
   },
@@ -43,12 +43,37 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   START_LEXER();
   switch (state) {
     case 0:
-      ACCEPT_TOKEN(anon_sym_);
       if (lookahead == 0)
         ADVANCE(1);
+      if (lookahead == 'h')
+        ADVANCE(2);
+      if (lookahead == '\t' ||
+          lookahead == '\n' ||
+          lookahead == '\r' ||
+          lookahead == ' ')
+        SKIP(0);
       END_STATE();
     case 1:
       ACCEPT_TOKEN(ts_builtin_sym_end);
+      END_STATE();
+    case 2:
+      if (lookahead == 'e')
+        ADVANCE(3);
+      END_STATE();
+    case 3:
+      if (lookahead == 'l')
+        ADVANCE(4);
+      END_STATE();
+    case 4:
+      if (lookahead == 'l')
+        ADVANCE(5);
+      END_STATE();
+    case 5:
+      if (lookahead == 'o')
+        ADVANCE(6);
+      END_STATE();
+    case 6:
+      ACCEPT_TOKEN(anon_sym_hello);
       END_STATE();
     default:
       return false;
@@ -64,12 +89,12 @@ static TSLexMode ts_lex_modes[STATE_COUNT] = {
 
 static uint16_t ts_parse_table[STATE_COUNT][SYMBOL_COUNT] = {
   [0] = {
-    [anon_sym_] = ACTIONS(1),
+    [anon_sym_hello] = ACTIONS(1),
     [ts_builtin_sym_end] = ACTIONS(1),
   },
   [1] = {
     [sym_source_file] = STATE(3),
-    [anon_sym_] = ACTIONS(3),
+    [anon_sym_hello] = ACTIONS(3),
   },
   [2] = {
     [ts_builtin_sym_end] = ACTIONS(5),

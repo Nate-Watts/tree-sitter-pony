@@ -9,7 +9,8 @@
   "author": "Nate Watts",
   "license": "MIT",
   "scripts": {
-    "tree-sitter:generate": "tree-sitter generate"
+    "tree-sitter:generate": "tree-sitter generate",
+    "tree-sitter:parse": "tree-sitter parse"
   },
   "dependencies": {
     "nan": "^2.13.2"
