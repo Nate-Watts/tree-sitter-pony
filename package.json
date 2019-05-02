@@ -1,0 +1,17 @@
+{
+  "name": "tree-sitter-pony",
+  "version": "0.0.1",
+  "description": "tree-sitter parser for Pony",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nate-Watts/tree-sitter-pony.git"
+  },
+  "author": "Nate Watts",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.13.2"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.14.7"
+  }
+}
